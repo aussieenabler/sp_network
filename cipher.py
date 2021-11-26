@@ -34,4 +34,6 @@ if action[0] == action[action_index]:
     
     perm_text = basic_sp_network.permutate(sub_text)
 
-print(perm_text)
+    output = hex_ascii_converter.ascii_to_hex(perm_text)
+
+print(output)
