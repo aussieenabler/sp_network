@@ -26,21 +26,25 @@ print(f"What would you like to {action[action_index]}?")
 #get encrypt/decrypt string from user
 user_input = get_user_input("INPUT: ")
 
-
 #start encryption 
 if action[0] == action[action_index]:
 
     #substitute each character in user input
-    sub_text = basic_sp_network.substitute(user_input, action_index)
-    
-    perm_text = basic_sp_network.permutate(sub_text)
+    sub_text = basic_sp_network.substitute(user_input, 'ascii_characters', 'substitution_character')
 
+    perm_text = basic_sp_network.permutate(sub_text)
+    
     output = hex_ascii_converter.ascii_to_hex(perm_text)
 
 else:
     #convert input from hex to ascii
     ascii_text = hex_ascii_converter.hex_to_ascii(user_input)
-
+    print(ascii_text)
+    #permutate ascii_text
+    perm_text = basic_sp_network.permutate(ascii_text)
+    print(perm_text)
+    #reverse substutite premutated text
+    output = basic_sp_network.substitute(perm_text, 'substitution_character', 'ascii_characters')
 
 
 print(output)
